@@ -1,4 +1,5 @@
 import 'package:back_desing/utils/emoticon_face.dart';
+import 'package:back_desing/utils/exercise_tile.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -11,20 +12,20 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-   
     return Scaffold(
       backgroundColor: Colors.blue,
-       bottomNavigationBar:BottomNavigationBar(items: [
-      BottomNavigationBarItem(icon: Icon(Icons.home),label: 'Home'),
-       BottomNavigationBarItem(icon: Icon(Icons.home),label:'' ),
-        BottomNavigationBarItem(icon: Icon(Icons.home),label: ''),
-       
-    ],),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.message), label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: ''),
+        ],
+      ),
       body: SafeArea(
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25 ),
+              padding: const EdgeInsets.symmetric(horizontal: 25),
               child: Column(
                 children: [
                   Row(
@@ -70,7 +71,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Container(
                     child: Padding(
-                      padding: EdgeInsets.all(12),
+                      padding: const EdgeInsets.all(12),
                       child: Row(
                         children: [
                           Icon(
@@ -97,7 +98,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
+                    children: const [
                       Text(
                         'How do you feel?',
                         style: TextStyle(
@@ -132,47 +133,108 @@ class _HomePageState extends State<HomePage> {
                           )
                         ],
                       ),
-                       Column(
-                      children: [
-                        EmoticonFace(emoticonFace: '🙂',),
-                        const SizedBox(height: 8,),
-                        const Text('FANE',style: TextStyle(
-                          color: Colors.white
-                        ),)
-                      ],
-                    ),
-                     Column(
-                      children: [
-                        EmoticonFace(emoticonFace: '😃',),
-                        const SizedBox(height: 8,),
-                        const Text('Well',style: TextStyle(
-                          color: Colors.white
-                        ),)
-                      ],
-                    ),
-                     Column(
-                      children: [
-                        EmoticonFace(emoticonFace: '🥳',),
-                        const SizedBox(height: 8,),
-                        const Text('Excelent',style: TextStyle(
-                          color: Colors.white
-                        ),)
-                      ],
-                    ),
+                      Column(
+                        children: [
+                          EmoticonFace(
+                            emoticonFace: '🙂',
+                          ),
+                          const SizedBox(
+                            height: 8,
+                          ),
+                          const Text(
+                            'FANE',
+                            style: TextStyle(color: Colors.white),
+                          )
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          EmoticonFace(
+                            emoticonFace: '😃',
+                          ),
+                          const SizedBox(
+                            height: 8,
+                          ),
+                          const Text(
+                            'Well',
+                            style: TextStyle(color: Colors.white),
+                          )
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          EmoticonFace(
+                            emoticonFace: '🥳',
+                          ),
+                          const SizedBox(
+                            height: 8,
+                          ),
+                          const Text(
+                            'Excelent',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
-                 
-                 
                 ],
               ),
             ),
-            
-             Expanded(
-                  
-                    child: Container(
-                      color: Colors.white,
-                    ),
-                  )
+            const SizedBox(
+              height: 25,
+            ),
+            Expanded(
+              child: Container(
+                color: Colors.grey[300],
+                padding: const EdgeInsets.all(25),
+                child: Center(
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: const [
+                          Text(
+                            'Exercises',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
+                          ),
+                          Icon(Icons.more_horiz),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 25,
+                      ),
+                      Expanded(
+                        child: ListView(
+                          children: const[
+                            ExerciseTile(
+                              icon: Icons.favorite,
+                              exercisiName: 'Speaking Skills,',
+                              numberOfExercises: 16,
+                              color: Colors.orange,
+                            ),
+                            ExerciseTile(
+                               icon: Icons.person,
+                              exercisiName: 'Reading  Skills,',
+                              numberOfExercises: 10,
+                              color: Colors.blue,
+                            ),
+                            ExerciseTile(
+                               icon: Icons.star,
+                              exercisiName: 'Writing Skills,',
+                              numberOfExercises: 20,
+                              color: Colors.pink,
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
